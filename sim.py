@@ -63,7 +63,7 @@ if __name__ == "__main__":
     b = np.hstack([b_agent1, b_agent2])
 
     #Initial guess for the parameters
-    x = np.random.randn(2)
+    x = np.zeros(2)
     # Solve the problem using PRP
     calc_x, required_stage, L2_norm, R = implement_PRP(
         A=A, b=b, x=x, number_of_agents=2, required_L2_norm=0.5
