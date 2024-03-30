@@ -68,6 +68,7 @@ if __name__ == "__main__":
     calc_x, required_stage, L2_norm, R = implement_PRP(
         A=A, b=b, x=x, number_of_agents=2, required_L2_norm=0.5
     )
+    
 
     print("Estimated parameters (x) using PRP:", calc_x)
 
