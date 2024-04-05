@@ -3,7 +3,7 @@ import numpy as np
 import multiprocessing as mp
 
 
-def implement_PRP(A, b, x, number_of_agents, required_L2_norm):
+def implement_PRP(A, b, x, number_of_agents, required_L2_norm,max_iterations=100):
     # Parallel Residual Projection Algorithm
 
     p = number_of_agents
@@ -14,7 +14,6 @@ def implement_PRP(A, b, x, number_of_agents, required_L2_norm):
     stage = 0
     while True:
         new_R = [R * w] * p         # divide R by the weights of p agents to get new_R
-
         # multiprocessing starts here
         parameter_list = [[i, j] for i, j in zip(A, new_R)]
         pool = mp.Pool(processes=p)
@@ -27,7 +26,7 @@ def implement_PRP(A, b, x, number_of_agents, required_L2_norm):
         L2_norm = np.linalg.norm(R)
 
         stage += 1
-        if L2_norm <= required_L2_norm or stage >= 500:
+        if L2_norm <= required_L2_norm or stage >= max_iterations:
             break
 
     return x, stage, L2_norm, R

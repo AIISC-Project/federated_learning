@@ -30,6 +30,7 @@ class SimpleAgent:
         Returns the generated data.
         """
         return self.x, self.u
+    
 if __name__ == "__main__":
     # Parameters for simulation
     T = 500  # Time steps
@@ -66,7 +67,7 @@ if __name__ == "__main__":
     x = np.zeros(2)
     # Solve the problem using PRP
     calc_x, required_stage, L2_norm, R = implement_PRP(
-        A=A, b=b, x=x, number_of_agents=2, required_L2_norm=0.5
+        A=A, b=b, x=x, number_of_agents=2, required_L2_norm=.5,max_iterations=100
     )
     
 
